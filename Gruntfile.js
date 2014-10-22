@@ -32,9 +32,27 @@ module.exports = function(grunt){
                 }
             }
         },
+        sass: {
+            dist: {
+                files: {
+                    'dist/css/style.css': 'src/css/style.scss'
+                },
+                options: {
+                    style: 'expanded'
+                }
+            }
+        },
         watch: {
-            files: ['<%= jshint.files %>'],
-            tasks: ['jshint', 'qunit']
+            // hint:{
+            //     files: ['<%= jshint.files %>'],
+            //     tasks: ['jshint', 'qunit']
+            // },
+            scripts:{
+                files:[
+                    ['src/**/*.scss']
+                ],
+                tasks:['sass']
+            }
         }
     });
 
@@ -42,7 +60,8 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-sass');
 
-    grunt.registerTask('test', ['jshint']);
+    grunt.registerTask('test', ['watch']);
     grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
 };
