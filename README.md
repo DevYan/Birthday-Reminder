@@ -1,4 +1,4 @@
 Birthday-Reminder
 =================
 
-To remind the days of birthday wbo you care
+To remind the days of birthday who you care
